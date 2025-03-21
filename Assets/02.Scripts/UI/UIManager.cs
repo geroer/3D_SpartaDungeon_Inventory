@@ -12,13 +12,10 @@ public class UIManager : MonoBehaviour
     {
         get
         {
-            if (instance == null)
-            {
-                instance = new GameObject("UIManager").AddComponent<UIManager>();
-            }
             return instance;
         }
     }
+
     private void Awake()
     {
         if (instance == null)

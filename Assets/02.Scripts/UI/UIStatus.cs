@@ -9,19 +9,19 @@ public class UIStatus : MonoBehaviour
     [SerializeField] private TextMeshProUGUI defenseText;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI criticalHitText;
-    [SerializeField] private Button BackButton;
+    [SerializeField] private Button backButton;
 
     void Start()
     {
-        BackButton.onClick.AddListener(CloseStatus);
+        backButton.onClick.AddListener(CloseStatus);
     }
 
     public void SetCharacterStatus(Character player)
     {
-        attackText.text = $"{player.Attack}";
-        defenseText.text = $"{player.Defense}";
-        healthText.text = $"{player.Health}";
-        criticalHitText.text = $"{player.CriticalHit}";
+        attackText.text = $"{player.TotalAttack}";
+        defenseText.text = $"{player.TotalDefense}";
+        healthText.text = $"{player.TotalHealth}";
+        criticalHitText.text = $"{player.TotalCriticalHit}";
     }
 
     public void CloseStatus()
