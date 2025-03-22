@@ -422,3 +422,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 8432021876429916556}
   equippedIcon: {fileID: 5517980722639902099}
+  slotButton: {fileID: 7832296945593103531}
+  itemInfo: {fileID: 0}

@@ -16,12 +16,6 @@ public class UIInventory : MonoBehaviour
 
     void Start()
     {
-        items = GameManager.Instance.GetPlayer().inventory;
-        if (items == null)
-            Debug.Log("널");
-
-        SetSlot();
-
         backButton.onClick.AddListener(CloseInventory);
     }
 
@@ -31,8 +25,10 @@ public class UIInventory : MonoBehaviour
         UIManager.Instance.GetMainMenu().ShowButtons();
     }
 
-    public void RefeshInventoryUI()
+    public void OpenInventoryUI()
     {
+        items = GameManager.Instance.GetPlayer().inventory;
+
         foreach (Transform child in slotParent)
         {
             Destroy(child.gameObject);
@@ -48,6 +44,14 @@ public class UIInventory : MonoBehaviour
             UISlot newSlot = Instantiate(slotPrefab, slotParent);
             newSlot.SetItem(item);
             slots.Add(newSlot);
+        }
+    }
+
+    public void RefreshSlotUI()
+    {
+        foreach(UISlot slot in slots)
+        {
+            slot.RefreshUI();
         }
     }
 }

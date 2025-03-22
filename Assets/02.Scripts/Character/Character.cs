@@ -16,16 +16,16 @@ public class Character
     public int BaseCriticalHit { get; private set; }
 
     //장비 스펙
-    public int EquippedAttack;
-    public int EquippedDefense;
-    public int EquippedHealth;
-    public int EquippedCriticalHit;
+    public int equippedAttack;
+    public int equippedDefense;
+    public int equippedHealth;
+    public int equippedCriticalHit;
 
     //장비 적용 스펙
-    public int TotalAttack => BaseAttack + EquippedAttack;
-    public int TotalDefense => BaseDefense + EquippedDefense;
-    public int TotalHealth => BaseHealth + EquippedHealth;
-    public int TotalCriticalHit => BaseCriticalHit + EquippedCriticalHit;
+    public int TotalAttack => BaseAttack + equippedAttack;
+    public int TotalDefense => BaseDefense + equippedDefense;
+    public int TotalHealth => BaseHealth + equippedHealth;
+    public int TotalCriticalHit => BaseCriticalHit + equippedCriticalHit;
 
     public List<ItemData> inventory;
 
@@ -53,10 +53,36 @@ public class Character
             switch (item.itemType)
             {
                 case ItemType.Weapon:
+                    WeaponData weaponData = item as WeaponData;
                     weapon = item;
+                    equippedAttack = weaponData.attack;
+                    equippedCriticalHit = weaponData.criticalHit;
                     break;
                 case ItemType.Armor:
+                    ArmorData armorData = item as ArmorData;
                     armor = item;
+                    equippedDefense = armorData.defense;
+                    equippedHealth = armorData.helath;
+                    break;
+            }
+        }
+    }
+
+    public void UnEquip(ItemData item)
+    {
+        if (item != null)
+        {
+            switch (item.itemType)
+            {
+                case ItemType.Weapon:
+                    weapon = null;
+                    equippedAttack = 0;
+                    equippedCriticalHit = 0;
+                    break;
+                case ItemType.Armor:
+                    armor = null;
+                    equippedDefense = 0;
+                    equippedHealth = 0;
                     break;
             }
         }

@@ -5,8 +5,14 @@ public class UISlot : MonoBehaviour
 {
     [SerializeField] private Image itemIcon;
     [SerializeField] private Image equippedIcon;
+    [SerializeField] private Button slotButton;
 
     private ItemData itemData;
+
+    private void Start()
+    {
+        slotButton.onClick.AddListener(OpenItemInfoUI);
+    }
 
     public void SetItem(ItemData item)
     {
@@ -47,5 +53,11 @@ public class UISlot : MonoBehaviour
         }
         else
             return false;
+    }
+
+    void OpenItemInfoUI()
+    {
+        UIManager.Instance.GetUIItemInfo().gameObject.SetActive(true);
+        UIManager.Instance.GetUIItemInfo().SetItemInfo(itemData, IsEquipped());
     }
 }

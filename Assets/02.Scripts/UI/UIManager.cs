@@ -6,7 +6,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private UIMainMenu uiMainMenu;
     [SerializeField] private UIStatus uiStatus;
-    [SerializeField] private UIInventory uIInventory;
+    [SerializeField] private UIInventory uiInventory;
+    [SerializeField] private UIItemInfo uiItemInfo;
 
     public static UIManager Instance
     {
@@ -40,7 +41,12 @@ public class UIManager : MonoBehaviour
 
     public UIInventory GetUIInventory()
     {
-        return uIInventory;
+        return uiInventory;
+    }
+
+    public UIItemInfo GetUIItemInfo()
+    {
+        return uiItemInfo;
     }
 
     public void ShowUI(GameObject ui, bool isActive)

@@ -45,6 +45,7 @@ public class UIMainMenu : MonoBehaviour
     public void OpenInventory()
     {
         UIManager.Instance.ShowUI(UIManager.Instance.GetUIInventory().gameObject, true);
+        UIManager.Instance.GetUIInventory().OpenInventoryUI();
         HideButtons();
     }
 
